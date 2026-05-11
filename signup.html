@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Create Account | PhotoStudio</title>
+</head>
+<body>
+    <nav>
+        <h2>📸 PhotoStudio</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+    <div class="auth-box">
+        <h2>CREATE ACCOUNT</h2>
+        <form id="signupForm">
+            <input type="text" id="sName" placeholder="Full Name" required>
+            <input type="email" id="sEmail" placeholder="Email Address" required>
+            <input type="password" id="sPass" placeholder="Password" required>
+            <button type="submit" class="btn-primary">SIGN UP</button>
+        </form>
+        <p style="margin-top: 15px;">Already have an account? <a href="login.html" style="color:#ff4757">Login here</a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('sName').value;
+        const email = document.getElementById('sEmail').value;
+        const password = document.getElementById('sPass').value;
+
+        try {
+            const response = await fetch('/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            if (response.ok) {
+                alert("Account Created! Please Login.");
+                window.location.href = 'login.html';
+            } else {
+                const errorData = await response.json();
+                alert("Signup Failed: " + errorData.message);
+            }
+        } catch (error) {
+            alert("Error: Cannot connect to server. Did you start node server.js?");
+        }
+    });
+</script>
+
+    <footer>
+        <p>&copy; 2026 PhotoStudio Inc. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
