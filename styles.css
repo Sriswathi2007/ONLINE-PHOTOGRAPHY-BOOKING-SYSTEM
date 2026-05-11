@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white; /* All text becomes White */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header/Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background: rgba(0,0,0,0.9);
+    border-bottom: 1px solid #ff4757; /* Added a thin Red line under Nav */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: #ff4757; } /* Red hover effect */
+
+/* Centering Container */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Glassmorphism Box for Forms */
+.auth-box {
+    background: rgba(255, 255, 255, 0.05); /* Darker glass effect */
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #ff4757; /* Solid Red Border */
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.2); /* Red Glow */
+}
+
+.auth-box h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Input Fields - White and Red theme */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid white; /* White Border */
+    color: white; /* White text when typing */
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff4757; /* Changes to Red when clicking to type */
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Light white placeholder */
+}
+
+/* Readonly fields (Email/Photographer Name) */
+input[readonly] {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ff4757; /* Makes fixed text Red */
+    border-color: #ff4757;
+    cursor: not-allowed;
+}
+
+/* Red Button Style */
+.btn-primary {
+    background: #ff4757; /* Solid Red */
+    color: white; /* White text */
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px; /* Square edges look more professional for MERN */
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.btn-primary:hover { 
+    background: #ff6b81; 
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+}
+
+/* Photographers Grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 80px;
+    width: 100%;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.photo-card:hover {
+    border-color: #ff4757; /* Card turns Red on hover */
+    transform: scale(1.02);
+}
+
+.photo-card img { width: 100%; height: 220px; object-fit: cover; }
+
+.card-info { padding: 20px; }
+.card-info h3 { color: white; margin: 10px 0; }
+.card-info small { color: #ff4757; font-weight: bold; }
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: rgba(0,0,0,0.9);
+    border-top: 1px solid #ff4757;
+    font-size: 13px;
+}
