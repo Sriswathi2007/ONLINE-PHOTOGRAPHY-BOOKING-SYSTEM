@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Photographers | PhotoStudio</title>
+</head>
+<body>
+    <nav>
+        <h2>📸 PhotoStudio</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <h1 style="text-align: center; margin-top: 40px;">Professional Photographers</h1>
+    
+    <div class="photo-grid" id="pGrid"></div>
+
+    <script>
+        // 1. Data for Photographers
+        const photographers = [
+            {n: "Arjun Sharma", s: "Royal Frames", p: "₹5,000", i: "https://images.unsplash.com/photo-1554080353-a576cf803bda?w=500"},
+            {n: "Priya Singh", s: "Golden Hour", p: "₹4,500", i: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=500"},
+            {n: "Vikram Rathore", s: "Elite Lens", p: "₹6,200", i: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500"},
+            {n: "Sonia Verma", s: "Memories Studio", p: "₹5,500", i: "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=500"},
+            {n: "Rahul Das", s: "Portrait Hub", p: "₹3,800", i: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"},
+            {n: "Anjali Nair", s: "Dreamy Clicks", p: "₹7,000", i: "https://images.unsplash.com/photo-1551316679-9c6ae9dec224?w=500"},
+            {n: "Karan Johar", s: "Cinematic Frames", p: "₹4,200", i: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500"},
+            {n: "Meera Iyer", s: "Nature Palette", p: "₹5,800", i: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500"},
+            {n: "Rohan Gupta", s: "Focus Flash", p: "₹6,500", i: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500"},
+            {n: "Sneha Reddy", s: "Bridal Bliss", p: "₹4,900", i: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500"},
+            {n: "Ishaan Khattar", s: "Urban Vibe", p: "₹5,200", i: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500"},
+            {n: "Tara Sutaria", s: "Ethereal Shoots", p: "₹7,500", i: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500"}
+        ];
+
+        // 2. Render Photographer Cards
+        const grid = document.getElementById('pGrid');
+        photographers.forEach(p => {
+            grid.innerHTML += `
+                <div class="photo-card">
+                    <img src="${p.i}" alt="${p.n}">
+                    <div class="card-info">
+                        <small style="color: #ff4757">${p.s}</small>
+                        <h3>${p.n}</h3>
+                        <p style="margin: 10px 0;">${p.p}</p>
+                        <button class="btn-primary" onclick="handleBooking('${p.n}')">BOOK NOW</button>
+                    </div>
+                </div>`;
+        });
+
+        // 3. THE STRICT CONDITION FUNCTION
+        function handleBooking(photographerName) {
+            // Check if user is logged in via localStorage
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (isLoggedIn !== 'true') {
+                // THE REQUIRED ALERT MESSAGE
+                alert("First login, next you have to book the photography");
+                
+                // Redirect to login page immediately
+                window.location.href = 'login.html';
+                return; 
+            }
+
+            // IF LOGGED IN: Save choice and proceed
+            localStorage.setItem('selectedP', photographerName);
+            window.location.href = 'booking.html';
+        }
+    </script>
+</body>
+</html>
